@@ -2,24 +2,25 @@ package com.waspbyte.equationizer.screens
 
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
-import com.waspbyte.equationizer.Equation
+import com.waspbyte.equationizer.Puzzle
+import com.waspbyte.equationizer.PuzzleResult
 import kotlin.math.log
 import kotlin.random.Random
 
 @Composable
 fun NormalScreen(navController: NavHostController) {
-    GameScreen(NormalEquation())
+    GameScreen(NormalPuzzle())
 }
 
-class NormalEquation : Equation {
+class NormalPuzzle : Puzzle {
     private var solution: String
-    override val equation: String
-    override fun check(input: String): Boolean {
-        return input == solution
+    override val puzzle: String
+    override fun check(input: String): PuzzleResult {
+        return if (input == solution) PuzzleResult.Finished else PuzzleResult.Wrong
     }
 
-    override fun next(): Equation {
-        return NormalEquation()
+    override fun next(): Puzzle {
+        return NormalPuzzle()
     }
 
     init {
@@ -39,6 +40,6 @@ class NormalEquation : Equation {
             }
             else -> {0}
         }.toString()
-        equation = "$a $sign $b"
+        puzzle = "$a $sign $b"
     }
 }

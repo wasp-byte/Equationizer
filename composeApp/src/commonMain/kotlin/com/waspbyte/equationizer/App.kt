@@ -6,6 +6,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.waspbyte.equationizer.screens.ClassicScreen
+import com.waspbyte.equationizer.screens.EquationScreen
 import com.waspbyte.equationizer.screens.HomeScreen
 import com.waspbyte.equationizer.screens.NormalScreen
 import org.jetbrains.compose.ui.tooling.preview.Preview
@@ -28,6 +29,9 @@ fun App() {
             }
             composable(Screens.Normal.route) {
                 NormalScreen(navController)
+            }
+            composable(Screens.Equation.route) {
+                EquationScreen(navController)
             }
         }
     }

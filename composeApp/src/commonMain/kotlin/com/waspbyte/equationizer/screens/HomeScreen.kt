@@ -19,5 +19,8 @@ fun HomeScreen(navController: NavHostController) {
         Button(onClick = { navController.navigate(Screens.Normal.route) }) {
             Text("Normal")
         }
+        Button(onClick = { navController.navigate(Screens.Equation.route) }) {
+            Text("Equation")
+        }
     }
 }

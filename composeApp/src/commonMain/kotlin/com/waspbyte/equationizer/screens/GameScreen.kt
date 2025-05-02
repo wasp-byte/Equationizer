@@ -12,12 +12,12 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.focus.focusRequester
-import com.waspbyte.equationizer.Equation
 import com.waspbyte.equationizer.EquationText
+import com.waspbyte.equationizer.Puzzle
 
 
 @Composable
-fun GameScreen(equation: Equation) {
+fun GameScreen(equation: Puzzle) {
     val viewModel = GameViewModel(equation)
     Column(
         modifier = Modifier.fillMaxSize(),
