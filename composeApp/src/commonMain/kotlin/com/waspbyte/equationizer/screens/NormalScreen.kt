@@ -7,11 +7,11 @@ import kotlin.math.log
 import kotlin.random.Random
 
 @Composable
-fun ClassicScreen(navController: NavHostController) {
-    GameScreen(ClassicEquation())
+fun NormalScreen(navController: NavHostController) {
+    GameScreen(NormalEquation())
 }
 
-class ClassicEquation : Equation {
+class NormalEquation : Equation {
     private var solution: String
     override val equation: String
     override fun check(input: String): Boolean {
@@ -19,7 +19,7 @@ class ClassicEquation : Equation {
     }
 
     override fun next(): Equation {
-        return ClassicEquation()
+        return NormalEquation()
     }
 
     init {
