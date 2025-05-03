@@ -13,7 +13,7 @@ fun NormalScreen(navController: NavHostController, prefs: PrefsDataStore) {
     GameScreen(NormalPuzzle(), prefs, navController)
 }
 
-class NormalPuzzle : Puzzle {
+class NormalPuzzle(private val level: Int = 1) : Puzzle {
     private var solution: String
     override val puzzle: String
     override fun check(input: String): PuzzleResult {
@@ -21,12 +21,11 @@ class NormalPuzzle : Puzzle {
     }
 
     override fun next(): Puzzle {
-        return NormalPuzzle()
+        return NormalPuzzle(level + 1)
     }
 
     init {
-        val level = 1.0
-        val scale = log(level, 10.0).toInt() + 5
+        val scale = log(level.toDouble(), 10.0).toInt() + 5
         var a = Random.nextInt(scale)
         val b = Random.nextInt(scale)
         val signs = arrayOf('+', '-', '*', '/')
