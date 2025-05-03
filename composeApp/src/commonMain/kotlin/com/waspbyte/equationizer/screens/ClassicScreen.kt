@@ -1,6 +1,7 @@
 package com.waspbyte.equationizer.screens
 
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.compositionLocalWithComputedDefaultOf
 import androidx.navigation.NavHostController
 import com.waspbyte.equationizer.PrefsDataStore
 import com.waspbyte.equationizer.Puzzle

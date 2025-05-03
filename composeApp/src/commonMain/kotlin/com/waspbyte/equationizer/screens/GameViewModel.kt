@@ -1,5 +1,9 @@
 package com.waspbyte.equationizer.screens
 
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.setValue
+import androidx.compose.ui.text.input.TextFieldValue
 import androidx.datastore.preferences.core.edit
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
@@ -18,18 +22,18 @@ import kotlinx.coroutines.launch
 import kotlin.math.min
 import kotlin.reflect.KClass
 
-class GameViewModel(private val prefs: PrefsDataStore): ViewModel() {
+class GameViewModel(private val prefs: PrefsDataStore) : ViewModel() {
     val currentEquation = MutableStateFlow<Puzzle>(EquationPuzzle(1))
 
-    private val _gameInput = MutableStateFlow<String>("")
-    val gameInput = _gameInput.asStateFlow()
+    private val _gameInput = MutableStateFlow("")
+    var gameInput = _gameInput.asStateFlow()
 
     val totalTime = 20000.0f
     var timeLeft = totalTime
 
     private val _progress = MutableStateFlow(1f)
     var progress = _progress.asStateFlow()
-    
+
     var ended = false
 
     var score = 0
@@ -44,7 +48,7 @@ class GameViewModel(private val prefs: PrefsDataStore): ViewModel() {
                 delay(100L)
                 timeLeft -= 100.0f
                 _progress.value = timeLeft / totalTime
-                if (timeLeft <=  0f) {
+                if (timeLeft <= 0f) {
                     val high = prefs.data.first()[HIGH_SCORE_KEY] ?: 0
                     if (score > high)
                         prefs.edit { it[HIGH_SCORE_KEY] = score }
@@ -56,6 +60,10 @@ class GameViewModel(private val prefs: PrefsDataStore): ViewModel() {
     }
 
     fun onInputChange(newText: String) {
+        if (newText.isEmpty()) {
+            _gameInput.value = ""
+            return
+        }
         when (currentEquation.value.check(newText)) {
             PuzzleResult.Wrong -> _gameInput.value = newText
             PuzzleResult.Finished -> {
@@ -64,6 +72,7 @@ class GameViewModel(private val prefs: PrefsDataStore): ViewModel() {
                 timeLeft = min(totalTime, timeLeft + 2000)
                 score++
             }
+
             PuzzleResult.Correct -> _gameInput.value = ""
         }
     }
