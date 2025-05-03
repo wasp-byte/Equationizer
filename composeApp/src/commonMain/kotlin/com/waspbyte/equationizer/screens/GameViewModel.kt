@@ -9,6 +9,7 @@ import com.waspbyte.equationizer.HIGH_SCORE_KEY
 import com.waspbyte.equationizer.PrefsDataStore
 import com.waspbyte.equationizer.Puzzle
 import com.waspbyte.equationizer.PuzzleResult
+import com.waspbyte.equationizer.TIMER_KEY
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -31,8 +32,13 @@ class GameViewModel(private val prefs: PrefsDataStore): ViewModel() {
 
     var score = 0
 
+
     fun startTimer() {
         viewModelScope.launch {
+            if (prefs.data.first()[TIMER_KEY] != true) {
+                _progress.value = 0.0f
+                return@launch
+            }
             while (true) {
                 delay(100L)
                 timeLeft -= 100.0f

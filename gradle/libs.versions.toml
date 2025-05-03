@@ -11,6 +11,8 @@ kotlinx-coroutines = "1.10.2"
 kotlinxSerializationJsonVersion = "1.8.0"
 kotlinxSerializationRuntime = "1.0.0"
 lifecycleLivedataCoreKtx = "2.8.7"
+materialIconsExtended = "2.0.1"
+materialIconsExtendedVersion = "2.0.0"
 navigationCompose = "2.8.0-alpha10"
 navigationComposeVersion = "2.8.9"
 uiTextAndroid = "1.8.0"
@@ -18,11 +20,13 @@ datastore = "1.1.1"
 kotlinxSerializationJson = "1.6.1"
 
 [libraries]
+androidx-material-icons-extended = { module = "androidx.compose.material:material-icons-extended", version.ref = "materialIconsExtended" }
 datastore = { module = "androidx.datastore:datastore", version.ref = "datastore" }
 datastore-preferences = { module = "androidx.datastore:datastore-preferences", version.ref = "datastore" }
 androidx-activity-compose = { module = "androidx.activity:activity-compose", version.ref = "androidx-activityCompose" }
 androidx-lifecycle-viewmodel = { group = "org.jetbrains.androidx.lifecycle", name = "lifecycle-viewmodel", version.ref = "androidx-lifecycle" }
 androidx-lifecycle-runtime-compose = { group = "org.jetbrains.androidx.lifecycle", name = "lifecycle-runtime-compose", version.ref = "androidx-lifecycle" }
+androidx-material-icons-extended-v200 = { module = "androidx.compose.material:material-icons-extended", version.ref = "materialIconsExtendedVersion" }
 kotlinx-coroutines-swing = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-swing", version.ref = "kotlinx-coroutines" }
 androidx-lifecycle-livedata-core-ktx = { group = "androidx.lifecycle", name = "lifecycle-livedata-core-ktx", version.ref = "lifecycleLivedataCoreKtx" }
 kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinxSerializationJsonVersion" }
