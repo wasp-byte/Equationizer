@@ -29,8 +29,7 @@ import com.waspbyte.equationizer.Screens
 @Composable
 fun GameScreen(puzzle: Puzzle, prefs: PrefsDataStore, navController: NavHostController, viewModel: GameViewModel = viewModel(factory = GameVMFactory(prefs))) {
     val progress by viewModel.progress.collectAsState()
-    if (progress <= 0f) {
-        // TODO detect no timer mode
+    if (viewModel.ended) {
         navController.navigate(Screens.GameEnd(viewModel.score, navController.currentBackStackEntry?.destination?.route!!)) {
             popUpTo(Screens.Home.route)
         }

@@ -29,9 +29,10 @@ class GameViewModel(private val prefs: PrefsDataStore): ViewModel() {
 
     private val _progress = MutableStateFlow(1f)
     var progress = _progress.asStateFlow()
+    
+    var ended = false
 
     var score = 0
-
 
     fun startTimer() {
         viewModelScope.launch {
@@ -47,6 +48,7 @@ class GameViewModel(private val prefs: PrefsDataStore): ViewModel() {
                     val high = prefs.data.first()[HIGH_SCORE_KEY] ?: 0
                     if (score > high)
                         prefs.edit { it[HIGH_SCORE_KEY] = score }
+                    ended = true
                     return@launch
                 }
             }
