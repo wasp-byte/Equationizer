@@ -2,14 +2,15 @@ package com.waspbyte.equationizer.screens
 
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
+import com.waspbyte.equationizer.PrefsDataStore
 import com.waspbyte.equationizer.Puzzle
 import com.waspbyte.equationizer.PuzzleResult
 import kotlin.math.log
 import kotlin.random.Random
 
 @Composable
-fun EquationScreen(navController: NavHostController) {
-    GameScreen(EquationPuzzle(1))
+fun EquationScreen(navController: NavHostController, prefs: PrefsDataStore) {
+    GameScreen(EquationPuzzle(1), prefs)
 }
 
 class EquationPuzzle(private val level: Int) : Puzzle {

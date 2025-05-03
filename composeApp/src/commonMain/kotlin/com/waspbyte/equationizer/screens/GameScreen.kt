@@ -21,10 +21,11 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.waspbyte.equationizer.EquationText
+import com.waspbyte.equationizer.PrefsDataStore
 import com.waspbyte.equationizer.Puzzle
 
 @Composable
-fun GameScreen(puzzle: Puzzle, viewModel: GameViewModel = viewModel()) {
+fun GameScreen(puzzle: Puzzle, prefs: PrefsDataStore, viewModel: GameViewModel = viewModel(factory = GameVMFactory(prefs))) {
     val progress by viewModel.progress.collectAsState()
 
     LaunchedEffect(Unit) {

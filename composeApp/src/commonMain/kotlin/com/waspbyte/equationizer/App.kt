@@ -13,7 +13,7 @@ import org.jetbrains.compose.ui.tooling.preview.Preview
 
 @Composable
 @Preview
-fun App() {
+fun App(prefs: PrefsDataStore) {
     MaterialTheme {
         val navController = rememberNavController()
 
@@ -22,16 +22,16 @@ fun App() {
             startDestination = Screens.Home.route,
         ) {
             composable(Screens.Home.route) {
-                HomeScreen(navController)
+                HomeScreen(navController, prefs)
             }
             composable(Screens.Classic.route) {
-                ClassicScreen(navController)
+                ClassicScreen(navController, prefs)
             }
             composable(Screens.Normal.route) {
-                NormalScreen(navController)
+                NormalScreen(navController, prefs)
             }
             composable(Screens.Equation.route) {
-                EquationScreen(navController)
+                EquationScreen(navController, prefs)
             }
         }
     }
