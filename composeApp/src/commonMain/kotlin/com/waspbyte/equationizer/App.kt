@@ -20,29 +20,29 @@ import org.jetbrains.compose.ui.tooling.preview.Preview
 fun App(prefs: PrefsDataStore) {
     MaterialTheme {
         val navController = rememberNavController()
-fun App() {
-    AppTheme {
-        Surface (
-            modifier = Modifier.fillMaxSize(),
-            color = MaterialTheme.colorScheme.background
-        ) {
-            val navController = rememberNavController()
+        AppTheme {
+            Surface(
+                modifier = Modifier.fillMaxSize(),
+                color = MaterialTheme.colorScheme.background
+            ) {
 
-        NavHost(
-            navController = navController,
-            startDestination = Screens.Home.route,
-        ) {
-            composable(Screens.Home.route) {
-                HomeScreen(navController, prefs)
-            }
-            composable(Screens.Classic.route) {
-                ClassicScreen(navController, prefs)
-            }
-            composable(Screens.Normal.route) {
-                NormalScreen(navController, prefs)
-            }
-            composable(Screens.Equation.route) {
-                EquationScreen(navController, prefs)
+                NavHost(
+                    navController = navController,
+                    startDestination = Screens.Home.route,
+                ) {
+                    composable(Screens.Home.route) {
+                        HomeScreen(navController, prefs)
+                    }
+                    composable(Screens.Classic.route) {
+                        ClassicScreen(navController, prefs)
+                    }
+                    composable(Screens.Normal.route) {
+                        NormalScreen(navController, prefs)
+                    }
+                    composable(Screens.Equation.route) {
+                        EquationScreen(navController, prefs)
+                    }
+                }
             }
         }
     }
