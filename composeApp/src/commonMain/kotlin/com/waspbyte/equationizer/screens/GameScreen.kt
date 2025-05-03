@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
@@ -16,7 +17,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.focus.focusRequester
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
@@ -67,6 +67,7 @@ fun GetGameInput(viewModel: GameViewModel) {
 
 @Composable
 fun RectangularProgressBar(progress: Float) {
+    val primary = MaterialTheme.colorScheme.primary
     Canvas(modifier = Modifier.fillMaxSize()) {
         val strokeWidth = 20.dp.toPx()
         val width = size.width
@@ -80,7 +81,7 @@ fun RectangularProgressBar(progress: Float) {
 
             val topEmpty = minOf(remainingEmptyLength, width)
             drawLine(
-                color = Color.Red,
+                color = primary,
                 start = androidx.compose.ui.geometry.Offset(0f, 0f),
                 end = androidx.compose.ui.geometry.Offset(width - topEmpty, 0f),
                 strokeWidth = strokeWidth
@@ -89,7 +90,7 @@ fun RectangularProgressBar(progress: Float) {
 
             val leftEmpty = minOf(remainingEmptyLength, height)
             drawLine(
-                color = Color.Red,
+                color = primary,
                 start = androidx.compose.ui.geometry.Offset(0f, height),
                 end = androidx.compose.ui.geometry.Offset(0f, leftEmpty),
                 strokeWidth = strokeWidth
@@ -98,7 +99,7 @@ fun RectangularProgressBar(progress: Float) {
 
             val bottomEmpty = minOf(remainingEmptyLength, width)
             drawLine(
-                color = Color.Red,
+                color = primary,
                 start = androidx.compose.ui.geometry.Offset(bottomEmpty, height),
                 end = androidx.compose.ui.geometry.Offset(width, height),
                 strokeWidth = strokeWidth
@@ -107,7 +108,7 @@ fun RectangularProgressBar(progress: Float) {
 
             val rightEmpty = minOf(remainingEmptyLength, height)
             drawLine(
-                color = Color.Red,
+                color = primary,
                 start = androidx.compose.ui.geometry.Offset(width, 0f),
                 end = androidx.compose.ui.geometry.Offset(width, height - rightEmpty),
                 strokeWidth = strokeWidth
