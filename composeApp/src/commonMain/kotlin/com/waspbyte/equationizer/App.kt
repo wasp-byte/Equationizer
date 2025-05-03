@@ -45,8 +45,8 @@ fun App(prefs: PrefsDataStore) {
                         EquationScreen(navController, prefs)
                     }
                     composable<Screens.GameEnd> { backStackEntry ->
-                        val level: Int = backStackEntry.toRoute<Screens.GameEnd>().level
-                        GameEndScreen(level, navController, prefs)
+                        val entry = backStackEntry.toRoute<Screens.GameEnd>()
+                        GameEndScreen(entry.level, entry.fromRoute, navController, prefs)
                     }
                 }
             }

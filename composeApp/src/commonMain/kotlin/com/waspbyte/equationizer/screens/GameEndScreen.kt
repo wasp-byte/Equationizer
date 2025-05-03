@@ -9,10 +9,11 @@ import androidx.compose.runtime.collectAsState
 import androidx.navigation.NavHostController
 import com.waspbyte.equationizer.HIGH_SCORE_KEY
 import com.waspbyte.equationizer.PrefsDataStore
+import com.waspbyte.equationizer.Screens
 import kotlinx.coroutines.flow.map
 
 @Composable
-fun GameEndScreen(level: Int, navController: NavHostController, prefs: PrefsDataStore) {
+fun GameEndScreen(level: Int, route: String, navController: NavHostController, prefs: PrefsDataStore) {
     val highScore = prefs.data.map { it[HIGH_SCORE_KEY] }.collectAsState(0)
     Column {
         Text("${level}lvl")
@@ -21,7 +22,9 @@ fun GameEndScreen(level: Int, navController: NavHostController, prefs: PrefsData
             Button(onClick = { navController.popBackStack() }) {
                 Text("Back")
             }
-//            Button(onClick = { navController.navigate(Screens.)
+            Button(onClick = { navController.navigate(route) { popUpTo(Screens.Home.route) } }) {
+                Text("Again")
+            }
         }
     }
 }

@@ -9,5 +9,5 @@ sealed class Screens(val route: String) {
     data object Normal : Screens("normal_screen")
     data object Equation : Screens("equation_screen")
     @Serializable
-    data class GameEnd(val level: Int) : Screens("game_end_screen")
+    data class GameEnd(val level: Int, val fromRoute: String) : Screens("game_end_screen")
 }
