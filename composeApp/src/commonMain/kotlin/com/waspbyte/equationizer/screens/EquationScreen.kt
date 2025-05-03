@@ -17,12 +17,10 @@ class EquationPuzzle(private val level: Int) : Puzzle {
     override val puzzle: String
     override fun check(input: String): PuzzleResult {
         if (solution.remove(input)) {
-            println(solution)
             if (solution.isEmpty())
                 return PuzzleResult.Finished
             return PuzzleResult.Correct
         }
-        println(solution)
         return PuzzleResult.Wrong
     }
 
@@ -71,8 +69,6 @@ class EquationPuzzle(private val level: Int) : Puzzle {
 
         val xs = (0 until numSol).map {Random.nextInt(scale)}.toList()
         solution = xs.map{it.toString()}.toMutableList()
-
-        println(numSol)
 
         puzzle = when (numSol) {
             2 -> {

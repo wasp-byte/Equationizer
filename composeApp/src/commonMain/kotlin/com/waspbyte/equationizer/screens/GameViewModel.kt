@@ -36,7 +36,6 @@ class GameViewModel: ViewModel() {
         when (currentEquation.value.check(newText)) {
             PuzzleResult.Wrong -> _gameInput.value = newText
             PuzzleResult.Finished -> {
-                println("Finished")
                 _gameInput.value = ""
                 currentEquation.value = currentEquation.value.next()
                 timeLeft = min(totalTime, timeLeft + 2000)
