@@ -9,6 +9,7 @@ plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.composeMultiplatform)
     alias(libs.plugins.composeCompiler)
+    kotlin("plugin.serialization") version "2.1.20"
 }
 
 kotlin {
@@ -71,6 +72,8 @@ kotlin {
             implementation(libs.navigation.compose)
             implementation(libs.datastore.preferences)
             implementation(libs.datastore)
+            implementation(libs.navigation.compose)
+            implementation(libs.kotlinx.serialization.json)
         }
         desktopMain.dependencies {
             implementation(compose.desktop.currentOs)

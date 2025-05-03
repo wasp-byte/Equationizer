@@ -8,8 +8,10 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import androidx.navigation.toRoute
 import com.waspbyte.equationizer.screens.ClassicScreen
 import com.waspbyte.equationizer.screens.EquationScreen
+import com.waspbyte.equationizer.screens.GameEndScreen
 import com.waspbyte.equationizer.screens.HomeScreen
 import com.waspbyte.equationizer.screens.NormalScreen
 import com.waspbyte.equationizer.ui.AppTheme
@@ -41,6 +43,10 @@ fun App(prefs: PrefsDataStore) {
                     }
                     composable(Screens.Equation.route) {
                         EquationScreen(navController, prefs)
+                    }
+                    composable<Screens.GameEnd> { backStackEntry ->
+                        val level: Int = backStackEntry.toRoute<Screens.GameEnd>().level
+                        GameEndScreen(level, navController, prefs)
                     }
                 }
             }

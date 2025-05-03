@@ -29,7 +29,7 @@ class GameViewModel(private val prefs: PrefsDataStore): ViewModel() {
     private val _progress = MutableStateFlow(1f)
     var progress = _progress.asStateFlow()
 
-    private var score = 0
+    var score = 0
 
     fun startTimer() {
         viewModelScope.launch {

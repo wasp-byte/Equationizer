@@ -10,7 +10,7 @@ import kotlin.random.Random
 
 @Composable
 fun ClassicScreen(navController: NavHostController, prefs: PrefsDataStore) {
-    GameScreen(ClassicPuzzle(), prefs)
+    GameScreen(ClassicPuzzle(), prefs, navController)
 }
 
 class ClassicPuzzle : Puzzle {

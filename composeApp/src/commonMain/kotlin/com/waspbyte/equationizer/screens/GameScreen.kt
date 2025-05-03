@@ -20,13 +20,21 @@ import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.navigation.NavHostController
 import com.waspbyte.equationizer.EquationText
 import com.waspbyte.equationizer.PrefsDataStore
 import com.waspbyte.equationizer.Puzzle
+import com.waspbyte.equationizer.Screens
 
 @Composable
-fun GameScreen(puzzle: Puzzle, prefs: PrefsDataStore, viewModel: GameViewModel = viewModel(factory = GameVMFactory(prefs))) {
+fun GameScreen(puzzle: Puzzle, prefs: PrefsDataStore, navController: NavHostController, viewModel: GameViewModel = viewModel(factory = GameVMFactory(prefs))) {
     val progress by viewModel.progress.collectAsState()
+    if (progress <= 0f) {
+        navController.popBackStack()
+        navController.navigate(Screens.GameEnd(viewModel.score)) {
+            popUpTo(Screens.Home.route)
+        }
+    }
 
     LaunchedEffect(Unit) {
         viewModel.startTimer()
